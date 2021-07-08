@@ -31,7 +31,7 @@ Many times when working with pdfs especially those with images produced from LaT
     -v, --verbose         Output updates while program is running, default True.
     -q, --quality         Compression quality: screen, ebook, printer, prepress, default. 
 
-The compression level goes from **screen** as the strongest yielding smaller output files, to **screen** as the weakest yielding higher output files.
+The compression level goes from **screen** as the strongest yielding smaller output files, to **default** as the weakest yielding higher output files.
 
 ### Example
     $ ./shrink.py -i test.pdf -o out.pdf -q printer
