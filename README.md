@@ -22,7 +22,7 @@ Many times when working with pdfs especially those with images produced from LaT
 - Use ```python shrink.py -h``` to test install.
 
 # Usage
-    $ shrink.py [-h] [-i IN_FILE] [-o OUT_FILE] [-v VERBOSE] [-q QUALITY]
+    $ ./shrink.py [-h] [-i IN_FILE] [-o OUT_FILE] [-v VERBOSE] [-q QUALITY]
 
     optional arguments:
     -h, --help            show this help message and exit
@@ -34,6 +34,7 @@ Many times when working with pdfs especially those with images produced from LaT
 The compression level goes from **screen** as the strongest yielding smaller output files, to **default** as the weakest yielding higher output files.
 
 ### Example
+
     $ ./shrink.py -i test.pdf -o out.pdf -q printer
     File checks done.
     Shrinking Pdf...
@@ -41,6 +42,8 @@ The compression level goes from **screen** as the strongest yielding smaller out
     Output size: 0.78 MB
     Done.
 
-  
+On Windows, use:
+    
+    > python shrink.py -i test.pdf -o out.pdf -q printer
   
 
