@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/python
 
 import sys
 from sys import platform
@@ -7,7 +7,7 @@ import subprocess
 import argparse
 
 
-def check_pdf(in_file: str):
+def check_pdf(in_file):
     # check file exists and is pdf
     if os.path.isfile(in_file) and in_file.split('.')[-1].lower() == 'pdf':
         return True
@@ -15,7 +15,7 @@ def check_pdf(in_file: str):
         return False
 
 
-def shrink_pdf(in_file: str, out_file: str, quality: str = 'default', verbose: bool = True):
+def shrink_pdf(in_file, out_file, quality='default', verbose=True):
     if not check_pdf(in_file):
         print('Error: Check that file exists and that it is has .pdf extension.')
     else:
