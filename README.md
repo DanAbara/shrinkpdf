@@ -2,7 +2,7 @@
 Inspired by this 
 [gist](https://gist.github.com/firstdoit/6390547). 
 
-Many times when working with pdfs especially those with images produced from LaTeX, the file sizes can be very large. This script may be useful in considerably reducing the size of such pdfs. 
+Use this script to resize/reduce/shrink large pdfs. Feel free to share.
 
 # Installation
 ### Requires: 
