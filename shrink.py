@@ -19,7 +19,7 @@ def check_pdf(in_file):
         return False
 
 
-def shrink_pdf(in_file, out_file, quality='default', verbose=True):
+def shrink_pdf(in_file, out_file, quality, verbose):
     """
     Shrinks the size of a PDF. There are five levels of compression
         - default: weakest level of compression -> larger output files
@@ -65,15 +65,15 @@ def main():
                         type=str, help='Path to input PDF file whose size is to be reduced')
     parser.add_argument('-o', '--out_file', dest='out_file', type=str,
                         help='Path to compressed PDF file')
-    parser.add_argument('-v', '--verbose', dest='verbose', type=bool,
+    parser.add_argument('-v', '--verbose', dest='verbose', type=bool, default=True,
                         help='Output updates while program is running, default True.')
-    parser.add_argument('-q', '--quality', dest='quality', type=str,
+    parser.add_argument('-q', '--quality', dest='quality', type=str, default='default',
                         help='Compression quality: screen, ebook, printer, prepress, default. '
                              '\nStrongest compression level is "screen" -> Smaller output file size.'
                              '\nWeakest compression level is "default" -> Larger output file size.')
 
     args = parser.parse_args()
-    shrink_pdf(args.in_file, args.out_file)
+    shrink_pdf(args.in_file, args.out_file, args.quality, args.verbose)
 
 
 if __name__=='__main__':
