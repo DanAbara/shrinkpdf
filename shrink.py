@@ -1,7 +1,15 @@
 #!/usr/bin/python3
 
-""" Author: D. Abara
+"""
+Author: D. Abara
+Date: 08/07/2021
 
+Shrinks the size of a PDF. There are five levels of compression:
+        - default: weakest level -> larger output files
+        - prepress
+        - printer
+        - ebook
+        - screen: strongest level -> smaller output files
 """
 
 import sys
@@ -11,31 +19,18 @@ import subprocess
 import argparse
 
 
-def check_pdf(in_file):
-    # check file exists and is pdf
-    if os.path.isfile(in_file) and in_file.split('.')[-1].lower() == 'pdf':
-        return True
-    else:
-        return False
-
-
 def shrink_pdf(in_file, out_file, quality, verbose):
     """
-    Shrinks the size of a PDF. There are five levels of compression
-        - default: weakest level of compression -> larger output files
-        - prepress
-        - printer
-        - ebook
-        - screen: strongest level of compression -> smaller output files
-
     :param in_file: The path to file whose size is to be shrinked.
     :param out_file: The path to output file produced by the program.
     :param quality: Level of compression.
     :param verbose: Show output as program runs
     :return: None
     """
-    if not check_pdf(in_file):
-        print('Error: Check that file exists and that it is has .pdf extension.')
+    if not os.path.isfile(in_file):
+        print('Error: invalid path for input file {}. File not found.'.format(in_file))
+    elif in_file.split('.')[-1].lower() != 'pdf':
+        print('Error: input file must have .pdf extension.')
     else:
         if verbose:
             print("File checks done.")
@@ -47,13 +42,13 @@ def shrink_pdf(in_file, out_file, quality, verbose):
         # begin file reduction
         start_size = round(float(os.path.getsize(in_file)/1e6), 2)
         if verbose:
-            print('Shrinking Pdf...'.format(start_size))
+            print('Shrinking Pdf...')
         subprocess.run([cmd, '-sDEVICE=pdfwrite', '-dCompatibilityLevel=1.4',
                     '-dPDFSETTINGS=/{}'.format(quality), '-dNOPAUSE', '-dQUIET', '-dBATCH',
                     '-sOutputFile={}'.format(out_file), in_file]
                    )
         output_size = round(float(os.path.getsize(out_file)/1e6), 2)
-        reduction = round(((start_size - output_size) / start_size ) * 100, 2)
+        reduction = round(((start_size - output_size) / start_size) * 100, 2)
         if verbose:
             print('PDF reduced by {}% \nOutput size: {} MB '.format(reduction, output_size))
             print('Done.')
@@ -62,15 +57,13 @@ def shrink_pdf(in_file, out_file, quality, verbose):
 def main():
     parser = argparse.ArgumentParser(description='Shrink the size of a PDF.')
     parser.add_argument('-i', '--in_file', dest='in_file',
-                        type=str, help='Path to input PDF file whose size is to be reduced')
+                        type=str, help='Path to input PDF file. Eg. input.pdf')
     parser.add_argument('-o', '--out_file', dest='out_file', type=str,
-                        help='Path to compressed PDF file')
+                        help='Path to compressed PDF file. Eg. output.pdf')
     parser.add_argument('-v', '--verbose', dest='verbose', type=bool, default=True,
                         help='Output updates while program is running, default True.')
     parser.add_argument('-q', '--quality', dest='quality', type=str, default='default',
-                        help='Compression quality: screen, ebook, printer, prepress, default. '
-                             '\nStrongest compression level is "screen" -> Smaller output file size.'
-                             '\nWeakest compression level is "default" -> Larger output file size.')
+                        help='Compression quality: screen, ebook, printer, prepress, default.')
 
     args = parser.parse_args()
     shrink_pdf(args.in_file, args.out_file, args.quality, args.verbose)
