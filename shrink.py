@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+""" Author: D. Abara
+
+"""
+
 import sys
 from sys import platform
 import os.path
@@ -16,6 +20,20 @@ def check_pdf(in_file):
 
 
 def shrink_pdf(in_file, out_file, quality='default', verbose=True):
+    """
+    Shrinks the size of a PDF. There are five levels of compression
+        - default: weakest level of compression -> larger output files
+        - prepress
+        - printer
+        - ebook
+        - screen: strongest level of compression -> smaller output files
+
+    :param in_file: The path to file whose size is to be shrinked.
+    :param out_file: The path to output file produced by the program.
+    :param quality: Level of compression.
+    :param verbose: Show output as program runs
+    :return: None
+    """
     if not check_pdf(in_file):
         print('Error: Check that file exists and that it is has .pdf extension.')
     else:
@@ -42,7 +60,7 @@ def shrink_pdf(in_file, out_file, quality='default', verbose=True):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Shrink a PDF')
+    parser = argparse.ArgumentParser(description='Shrink the size of a PDF.')
     parser.add_argument('-i', '--in_file', dest='in_file',
                         type=str, help='Path to input PDF file whose size is to be reduced')
     parser.add_argument('-o', '--out_file', dest='out_file', type=str,
@@ -55,10 +73,8 @@ def main():
                              '\nWeakest compression level is "default" -> Larger output file size.')
 
     args = parser.parse_args()
-
     shrink_pdf(args.in_file, args.out_file)
 
 
 if __name__=='__main__':
     main()
-# shrink_pdf('test.pdf', 'out.pdf')
