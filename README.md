@@ -22,28 +22,27 @@ Use this script to resize/reduce/shrink large pdfs. Feel free to share.
 - Use ```python shrink.py -h``` to test install.
 
 # Usage
-    $ ./shrink.py [-h] [-i IN_FILE] [-o OUT_FILE] [-v VERBOSE] [-q QUALITY]
+    $ ./shrink.py [-h] [-i IN_FILE] [-v VERBOSE] [-q QUALITY]
 
     optional arguments:
     -h, --help            show this help message and exit
     -i, --in_file         Path to input PDF file. Eg. input.pdf
-    -o, --out_file        Path to compressed PDF file. Eg. output.pdf
-    -v, --verbose         Output updates while program is running, default True.
     -q, --quality         Compression quality: screen, ebook, printer, prepress, default. 
+    -v, --verbose         Output updates while program is running, default True.
 
 The compression level goes from **screen** as the strongest yielding smaller output files, to **default** as the weakest yielding higher output files.
 
 ### Example
 
-    $ ./shrink.py -i test.pdf -o out.pdf -q printer
-    File checks done.
-    Shrinking Pdf...
-    PDF reduced by 97.13%
-    Output size: 0.78 MB
-    Done.
+    $ ./shrink.py -i test.pdf
+    File checks done...
+    Shrinking file test.pdf...
+    Compression quality: default...
+    Done. PDF reduced by 38.18%, Output size: 7.01 MB.
+    Resized file written to: /home/daniel/Documents/shrinkpdf/test_resized.pdf.
+
 
 On Windows, use:
     
-    > python shrink.py -i test.pdf -o out.pdf -q printer
-  
-
+    > python shrink.py -i test.pdf
+    
