@@ -49,5 +49,5 @@ On Linux or Mac, use:
 
 On Windows, use:
     
-    > python shrink.py -i test.pdf -f shrink
+    > python pdftool.py -i test.pdf -f shrink
     
