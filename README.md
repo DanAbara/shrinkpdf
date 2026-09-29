@@ -1,4 +1,4 @@
-# shrinkpdf
+# pdftool
 Inspired by this 
 [gist](https://gist.github.com/firstdoit/6390547). 
 
@@ -12,17 +12,17 @@ Use this script to resize/reduce/shrink large pdfs OR to unlock a PDF file so it
 
 ### Mac OS & Linux
 - On Mac, install ghostscript using: ```brew install ghostscript```. On Linux, use ```sudo apt install ghostscript``` (tested on Ubuntu 18.04)
-- Clone this repo or download [shrink.py](https://github.com/DanAbara/shrinkpdf/blob/main/shrink.py) to your PC.
-- Run ```sudo chmod +x shrink.py``` from terminal to make the file executable. 
-- Test install. Run ```./shrink.py -h``` to view help.
+- Clone this repo or download [pdftool.py](https://github.com/DanAbara/shrinkpdf/blob/main/pdftool.py) to your PC.
+- Run ```sudo chmod +x pdftool.py``` from terminal to make the file executable. 
+- Test install. Run ```./pdftool.py -h``` to view the help menu. 
 
 ### Windows
 - Install ghostscript from https://www.ghostscript.com/
-- Clone the repo or download [shrink.py](https://github.com/DanAbara/shrinkpdf/blob/main/shrink.py) to your PC.
-- Use ```python shrink.py -h``` to test install.
+- Clone the repo or download [pdftool.py](https://github.com/DanAbara/shrinkpdf/blob/main/pdftool.py) to your PC.
+- Use ```python pdftool.py -h``` to test install.
 
 # Usage
-    $ ./shrink.py [-h] -f func -i IN_FILE [-p PWORD] [-q QUALITY] [-v VERBOSE]
+    $ ./pdftool.py [-h] -f func -i IN_FILE [-p PWORD] [-q QUALITY] [-v VERBOSE]
 
     required arguments:
     -i, --in_file         the input file, this argument is required
@@ -37,8 +37,9 @@ Use this script to resize/reduce/shrink large pdfs OR to unlock a PDF file so it
 For the shrink function, the compression level goes from **screen** as the strongest yielding smaller output files, to **default** as the weakest yielding higher output files.
 
 ### Example
+On Linux or Mac, use:
 
-    $ ./shrink.py -i test.pdf
+    $ ./pdftool.py -i test.pdf -f shrink
     File checks done...
     Shrinking file test.pdf...
     Compression quality: default...
@@ -48,5 +49,5 @@ For the shrink function, the compression level goes from **screen** as the stron
 
 On Windows, use:
     
-    > python shrink.py -i test.pdf
+    > python shrink.py -i test.pdf -f shrink
     
