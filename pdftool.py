@@ -110,10 +110,11 @@ def unlock_pdf(in_file, pword, verbose):
         out_file = in_file.split('.')[0]+'_unlocked.pdf'
         subprocess.run([cmd, 
                         '-sDEVICE=pdfwrite',
-                        '-dCompatibilityLevel=1.4',
+                        '-dCompatibilityLevel=1.7',
                         '-dNOPAUSE',
                         '-dQUIET',
                         '-dBATCH',
+                        '-dEmbedAllFonts=true',
                         '-sPDFPassword={}'.format(pword),
                         '-sOutputFile={}'.format(out_file),
                         in_file]
