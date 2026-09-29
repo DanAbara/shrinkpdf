@@ -2,7 +2,7 @@
 Inspired by this 
 [gist](https://gist.github.com/firstdoit/6390547). 
 
-Use this script to resize/reduce/shrink large pdfs. Feel free to share.
+Use this script to resize/reduce/shrink large pdfs OR to unlock a PDF file so it does not ask for a password everytime. Feel free to share.
 
 # Installation
 ### Requires: 
@@ -22,15 +22,19 @@ Use this script to resize/reduce/shrink large pdfs. Feel free to share.
 - Use ```python shrink.py -h``` to test install.
 
 # Usage
-    $ ./shrink.py [-h] [-i IN_FILE] [-v VERBOSE] [-q QUALITY]
+    $ ./shrink.py [-h] -f func -i IN_FILE [-p PWORD] [-q QUALITY] [-v VERBOSE]
+
+    required arguments:
+    -i, --in_file         the input file, this argument is required
+    -f, --func            the required function, set to either 'shrink' or 'unlock', this argument is required
 
     optional arguments:
-    -h, --help            show this help message and exit
-    -i, --in_file         Path to input PDF file. Eg. input.pdf
+    -h, --help            show this help message and exit.
+    -p, --pword           the unlock password for the PDF. Must be provided if -f is set to 'unlock'.
     -q, --quality         Compression quality: screen, ebook, printer, prepress, default. 
     -v, --verbose         Output updates while program is running, default True.
 
-The compression level goes from **screen** as the strongest yielding smaller output files, to **default** as the weakest yielding higher output files.
+For the shrink function, the compression level goes from **screen** as the strongest yielding smaller output files, to **default** as the weakest yielding higher output files.
 
 ### Example
 
